@@ -13,9 +13,6 @@ namespace Uzu
 		public static void Authenticate (System.Action<bool> onAuthentication)
 		{
 #if UNITY_IPHONE && !UNITY_EDITOR
-			// Show the default iOS banner when achievements are completed.
-			GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
-
 			if (!IsUserAuthenticated ()) {
 				Social.localUser.Authenticate (onAuthentication);	
 			}
@@ -37,6 +34,17 @@ namespace Uzu
 #endif
 		}
 		#endregion
+
+		/// <summary>
+		/// Show the default iOS banner when achievements are completed.
+		/// </summary>
+		public static void ShowDefaultAchievementCompletionBanner (bool doesShow = true)
+		{
+#if UNITY_IPHONE && !UNITY_EDITOR
+			// Show the default iOS banner when achievements are completed.
+			GameCenterPlatform.ShowDefaultAchievementCompletionBanner(doesShow);
+#endif
+		}
 
 		public static void ShowAchievementUI ()
 		{
