@@ -13,14 +13,15 @@ namespace Uzu
 	public class GameService
 	{
 		#region Authentication
-
 		public static void Authenticate (System.Action<bool> onAuthentication)
 		{
-#if UNITY_IPHONE && !UNITY_EDITOR
+#if UNITY_EDITOR
+
+#elif UNITY_IPHONE
 			if (!IsUserAuthenticated ()) {
 				Social.localUser.Authenticate (onAuthentication);	
 			}
-#elif UNITY_ANDROID && !UNITY_EDITOR && !UZU_GAMESTICK
+#elif UZU_GOOGLEPLAY
 			if((!IsUserAuthenticated ())){
 				GooglePlay.instance.Authenticate(onAuthentication);
 			}
@@ -37,13 +38,12 @@ namespace Uzu
 			return true;							
 #elif UNITY_EDITOR
 			return false;   
-#elif UNITY_ANDROID 
+#elif UZU_GOOGLEPLAY 
 			return GooglePlay.instance.IsUserAuthenticated();
 #else
 			return Social.localUser.authenticated;
 #endif
 		}
-
 		#endregion
 
 		/// <summary>
@@ -63,7 +63,7 @@ namespace Uzu
 #if UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
-#elif UNITY_ANDROID 
+#elif UZU_GOOGLEPLAY 
 				GooglePlay.instance.ShowAchievementUI();
 #else
 				Social.ShowAchievementsUI ();
@@ -77,7 +77,7 @@ namespace Uzu
 #if UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
-#elif UNITY_ANDROID 
+#elif UZU_GOOGLEPLAY 
 				GooglePlay.instance.ShowLeaderboardUI (leaderboardId);
 #else
 				GameCenterPlatform.ShowLeaderboardUI (leaderboardId, timeScope);
@@ -91,7 +91,7 @@ namespace Uzu
 #if UZU_GAMESTICK
 				//TODO the leaderBoardID need to be formated now it won't work
 				PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
-#elif UNITY_ANDROID 
+#elif UZU_GOOGLEPLAY 
 				GooglePlay.instance.ReportScore (score, leaderboardID);
 #else
 				Social.ReportScore (score, leaderboardID, result => { /*TODO*/});
@@ -105,7 +105,7 @@ namespace Uzu
 #if UZU_GAMESTICK
 				//TODO the leaderBoardID need to be formated now it won't work
 				PlayJamServices.Achievement_SetAchievementComplete (achievementID);
-#elif UNITY_ANDROID  
+#elif UZU_GOOGLEPLAY  
 				GooglePlay.instance.ReportAchievementProgress (achievementID, progress);
 #else
 				Social.ReportProgress (achievementID, progress, result => {/*TODO*/});
