@@ -3,8 +3,10 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.SocialPlatforms.GameCenter;
 
 #if UZU_GAMESTICK
-using PlayJamUnity;
+// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
+//using PlayJamUnity;
 #endif
+
 namespace Uzu
 {
 	/// <summary>
@@ -34,14 +36,16 @@ namespace Uzu
 
 		public static bool IsUserAuthenticated ()
 		{
-#if UZU_GAMESTICK
-			return true;							
-#elif UNITY_EDITOR
-			return false;   
+#if UNITY_EDITOR
+			return false;
+#elif UNITY_IPHONE
+			return Social.localUser.authenticated;
 #elif UZU_GOOGLEPLAY 
 			return GooglePlay.instance.IsUserAuthenticated();
+#elif UZU_GAMESTICK
+			return true;
 #else
-			return Social.localUser.authenticated;
+			#error Unhandled platform.
 #endif
 		}
 		#endregion
@@ -60,13 +64,15 @@ namespace Uzu
 		public static void ShowAchievementUI ()
 		{
 			if (IsUserAuthenticated ()) {
-#if UZU_GAMESTICK
+#if UNITY_IPHONE
+				Social.ShowAchievementsUI ();
+#elif UZU_GOOGLEPLAY
+				GooglePlay.instance.ShowAchievementUI();
+#elif UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
-#elif UZU_GOOGLEPLAY 
-				GooglePlay.instance.ShowAchievementUI();
 #else
-				Social.ShowAchievementsUI ();
+				#error Unhandled platform.
 #endif
 			}
 		}
@@ -74,13 +80,15 @@ namespace Uzu
 		public static void ShowLeaderboardUI (string leaderboardId, TimeScope timeScope)
 		{
 			if (IsUserAuthenticated ()) {
-#if UZU_GAMESTICK
+#if UNITY_IPHONE
+				GameCenterPlatform.ShowLeaderboardUI (leaderboardId, timeScope);
+#elif UZU_GOOGLEPLAY
+				GooglePlay.instance.ShowLeaderboardUI (leaderboardId);
+#elif UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
-#elif UZU_GOOGLEPLAY 
-				GooglePlay.instance.ShowLeaderboardUI (leaderboardId);
 #else
-				GameCenterPlatform.ShowLeaderboardUI (leaderboardId, timeScope);
+				#error Unhandled platform.
 #endif
 			}
 		}
@@ -88,13 +96,16 @@ namespace Uzu
 		public static void ReportScore (long score, string leaderboardID)
 		{
 			if (IsUserAuthenticated ()) {
-#if UZU_GAMESTICK
-				//TODO the leaderBoardID need to be formated now it won't work
-				PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
-#elif UZU_GOOGLEPLAY 
-				GooglePlay.instance.ReportScore (score, leaderboardID);
-#else
+#if UNITY_IPHONE
 				Social.ReportScore (score, leaderboardID, result => { /*TODO*/});
+#elif UZU_GOOGLEPLAY
+				GooglePlay.instance.ReportScore (score, leaderboardID);
+#elif UZU_GAMESTICK
+				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
+				//TODO the leaderBoardID need to be formated now it won't work
+				//PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
+#else
+				#error Unhandled platform.
 #endif
 			}
 		}
@@ -102,13 +113,16 @@ namespace Uzu
 		public static void ReportAchievementProgress (string achievementID, float progress)
 		{
 			if (IsUserAuthenticated ()) {
-#if UZU_GAMESTICK
-				//TODO the leaderBoardID need to be formated now it won't work
-				PlayJamServices.Achievement_SetAchievementComplete (achievementID);
-#elif UZU_GOOGLEPLAY  
-				GooglePlay.instance.ReportAchievementProgress (achievementID, progress);
-#else
+#if UNITY_IPHONE
 				Social.ReportProgress (achievementID, progress, result => {/*TODO*/});
+#elif UZU_GOOGLEPLAY
+				GooglePlay.instance.ReportAchievementProgress (achievementID, progress);
+#elif UZU_GAMESTICK
+				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
+				//TODO the leaderBoardID need to be formated now it won't work
+				//PlayJamServices.Achievement_SetAchievementComplete (achievementID);
+#else
+				#error Unhandled platform.
 #endif
 			}
 		}
