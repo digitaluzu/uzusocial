@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UZU_GOOGLEPLAY
+using UnityEngine;
 using System.Collections;
 
 namespace Uzu
@@ -115,3 +116,4 @@ namespace Uzu
 		}
 	}
 }
+#endif // UZU_GOOGLEPLAY
