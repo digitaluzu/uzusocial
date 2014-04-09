@@ -12,7 +12,7 @@ namespace Uzu
 	/// <summary>
 	/// Interface for interacting with various game services (GameCenter, Google Play, etc).
 	/// </summary>
-	public class GameService
+	public static class GameService
 	{
 		#region Authentication
 		public static void Authenticate (System.Action<bool> onAuthentication)
