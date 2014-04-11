@@ -44,6 +44,8 @@ namespace Uzu
 			return GooglePlay.instance.IsUserAuthenticated();
 #elif UZU_GAMESTICK
 			return true;
+#elif UNITY_WP8
+			return false; //#TODO_WP8 
 #else
 			#error Unhandled platform.
 #endif
@@ -71,6 +73,8 @@ namespace Uzu
 #elif UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
+#elif UNITY_WP8
+				//#TODO_WP8
 #else
 				#error Unhandled platform.
 #endif
@@ -87,6 +91,8 @@ namespace Uzu
 #elif UZU_GAMESTICK
 				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
 				//Maybe I should set a callback?
+#elif UNITY_WP8
+				//#TODO_WP8
 #else
 				#error Unhandled platform.
 #endif
@@ -104,6 +110,8 @@ namespace Uzu
 				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
 				//TODO the leaderBoardID need to be formated now it won't work
 				//PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
+#elif UNITY_WP8
+				//#TODO_WP8
 #else
 				#error Unhandled platform.
 #endif
@@ -121,6 +129,8 @@ namespace Uzu
 				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
 				//TODO the leaderBoardID need to be formated now it won't work
 				//PlayJamServices.Achievement_SetAchievementComplete (achievementID);
+#elif UNITY_WP8
+				//#TODO_WP8
 #else
 				#error Unhandled platform.
 #endif
