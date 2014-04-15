@@ -136,5 +136,14 @@ namespace Uzu
 #endif
 			}
 		}
+
+		public static void ResetAllAchievements (System.Action <bool> callback)
+		{
+#if UNITY_EDITOR
+
+#elif UNITY_IPHONE
+			GameCenterPlatform.ResetAllAchievements (callback);
+#endif
+		}
 	}
 }
