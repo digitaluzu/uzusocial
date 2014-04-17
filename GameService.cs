@@ -74,6 +74,7 @@ namespace Uzu
 #elif UZU_OUYA
 #elif UNITY_WP8
 #elif UNITY_STANDALONE
+#elif UNITY_WEBPLAYER
 #else
 				#error Unhandled platform.
 #endif
@@ -91,6 +92,7 @@ namespace Uzu
 #elif UZU_OUYA
 #elif UNITY_WP8
 #elif UNITY_STANDALONE
+#elif UNITY_WEBPLAYER
 #else
 				#error Unhandled platform.
 #endif
@@ -111,6 +113,7 @@ namespace Uzu
 #elif UZU_OUYA
 #elif UNITY_WP8
 #elif UNITY_STANDALONE
+#elif UNITY_WEBPLAYER
 #else
 				#error Unhandled platform.
 #endif
@@ -131,6 +134,7 @@ namespace Uzu
 #elif UZU_OUYA
 #elif UNITY_WP8
 #elif UNITY_STANDALONE
+#elif UNITY_WEBPLAYER
 #else
 				#error Unhandled platform.
 #endif
