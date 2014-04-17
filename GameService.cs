@@ -36,14 +36,14 @@ namespace Uzu
 
 		public static bool IsUserAuthenticated ()
 		{
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
 			return false;
 #elif UNITY_IPHONE
 			return Social.localUser.authenticated;
-#elif UZU_GOOGLEPLAY 
+#elif UZU_GOOGLEPLAY
 			return GooglePlay.instance.IsUserAuthenticated();
-#elif UZU_GAMESTICK
-			return true;
+#elif UZU_GAMESTICK || UZU_OUYA
+			return false;
 #elif UNITY_WP8
 			return false; //#TODO_WP8 
 #else
