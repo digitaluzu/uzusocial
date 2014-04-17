@@ -75,6 +75,7 @@ namespace Uzu
 				//Maybe I should set a callback?
 #elif UNITY_WP8
 				//#TODO_WP8
+#elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
 #endif
@@ -93,6 +94,7 @@ namespace Uzu
 				//Maybe I should set a callback?
 #elif UNITY_WP8
 				//#TODO_WP8
+#elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
 #endif
@@ -112,6 +114,7 @@ namespace Uzu
 				//PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
 #elif UNITY_WP8
 				//#TODO_WP8
+#elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
 #endif
@@ -131,6 +134,7 @@ namespace Uzu
 				//PlayJamServices.Achievement_SetAchievementComplete (achievementID);
 #elif UNITY_WP8
 				//#TODO_WP8
+#elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
 #endif
