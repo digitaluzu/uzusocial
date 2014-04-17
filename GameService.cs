@@ -71,10 +71,8 @@ namespace Uzu
 #elif UZU_GOOGLEPLAY
 				GooglePlay.instance.ShowAchievementUI();
 #elif UZU_GAMESTICK
-				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
-				//Maybe I should set a callback?
+#elif UZU_OUYA
 #elif UNITY_WP8
-				//#TODO_WP8
 #elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
@@ -90,10 +88,8 @@ namespace Uzu
 #elif UZU_GOOGLEPLAY
 				GooglePlay.instance.ShowLeaderboardUI (leaderboardId);
 #elif UZU_GAMESTICK
-				//TODO ... I should call a pannel change to show to custome UI but I do it direcly now ("Because the panel is game related")
-				//Maybe I should set a callback?
+#elif UZU_OUYA
 #elif UNITY_WP8
-				//#TODO_WP8
 #elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
@@ -112,8 +108,8 @@ namespace Uzu
 				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
 				//TODO the leaderBoardID need to be formated now it won't work
 				//PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
+#elif UZU_OUYA
 #elif UNITY_WP8
-				//#TODO_WP8
 #elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
@@ -132,8 +128,8 @@ namespace Uzu
 				// TODO: commenting out since it's not working and I don't want to add the dependency to the project if we're not using it.
 				//TODO the leaderBoardID need to be formated now it won't work
 				//PlayJamServices.Achievement_SetAchievementComplete (achievementID);
+#elif UZU_OUYA
 #elif UNITY_WP8
-				//#TODO_WP8
 #elif UNITY_STANDALONE
 #else
 				#error Unhandled platform.
