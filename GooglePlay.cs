@@ -48,7 +48,7 @@ namespace Uzu
 				OnPlayerConnected ();
 			} 
 
-			GooglePlayConnection.instance.start (GooglePlayConnection.CLIENT_GAMES | GooglePlayConnection.CLIENT_APPSTATE );
+			//GooglePlayConnection.instance.start (GooglePlayConnection.CLIENT_GAMES | GooglePlayConnection.CLIENT_APPSTATE );
 		
 			GooglePlayConnection.instance.connect ();
 		}
@@ -101,7 +101,7 @@ namespace Uzu
 		}
 		
 		private void OnPlayerConnected() {
-			GooglePlayManager.instance.loadPlayer ();
+			//GooglePlayManager.instance.loadPlayer ();
 			_onAuthentication(true);
 		}
 		
