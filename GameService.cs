@@ -44,12 +44,12 @@ namespace Uzu
 			return GooglePlay.instance.IsUserAuthenticated();
 #elif UZU_GAMESTICK || UZU_OUYA
 			return false;
-#elif UNITY_WP8
+#elif UNITY_WP8 || UNITY_METRO
 			return false; //#TODO_WP8 
 #else
-			#error Unhandled platform.
+    #error Unhandled platform.
 #endif
-		}
+        }
 		#endregion
 
 		/// <summary>
@@ -73,12 +73,13 @@ namespace Uzu
 #elif UZU_GAMESTICK
 #elif UZU_OUYA
 #elif UNITY_WP8
+#elif UNITY_METRO
 #elif UNITY_STANDALONE
 #elif UNITY_WEBPLAYER
 #else
-				#error Unhandled platform.
+    #error Unhandled platform.
 #endif
-			}
+            }
 		}
 
 		public static void ShowLeaderboardUI (string leaderboardId, TimeScope timeScope)
@@ -91,12 +92,13 @@ namespace Uzu
 #elif UZU_GAMESTICK
 #elif UZU_OUYA
 #elif UNITY_WP8
+#elif UNITY_METRO
 #elif UNITY_STANDALONE
 #elif UNITY_WEBPLAYER
 #else
-				#error Unhandled platform.
+    #error Unhandled platform.
 #endif
-			}
+            }
 		}
 
 		public static void ReportScore (long score, string leaderboardID)
@@ -112,12 +114,13 @@ namespace Uzu
 				//PlayJamServices.LeaderBoard_SaveScore ((int)score, 0);
 #elif UZU_OUYA
 #elif UNITY_WP8
+#elif UNITY_METRO
 #elif UNITY_STANDALONE
 #elif UNITY_WEBPLAYER
 #else
-				#error Unhandled platform.
+    #error Unhandled platform.
 #endif
-			}
+            }
 		}
 
 		public static void ReportAchievementProgress (string achievementID, float progress)
@@ -133,12 +136,13 @@ namespace Uzu
 				//PlayJamServices.Achievement_SetAchievementComplete (achievementID);
 #elif UZU_OUYA
 #elif UNITY_WP8
+#elif UNITY_METRO
 #elif UNITY_STANDALONE
 #elif UNITY_WEBPLAYER
 #else
-				#error Unhandled platform.
+    #error Unhandled platform.
 #endif
-			}
+            }
 		}
 
 		public static void ResetAllAchievements (System.Action <bool> callback)
