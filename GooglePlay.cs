@@ -27,7 +27,7 @@ namespace Uzu
 		2. Open AndroidManifest.xml and enter your package name in the package
 		attribute of the <manifest> element.
 	*/
-	public class GooglePlay : Singletone<GooglePlay> {
+		public class GooglePlay : SA_Singleton<GooglePlay> {
 			
 		static System.Action<bool> _onAuthentication;
 		
@@ -61,7 +61,7 @@ namespace Uzu
 		public void ShowAchievementUI ()
 		{
 			if (IsUserAuthenticated ()) {
-				GooglePlayManager.instance.showAchivmentsUI ();
+				GooglePlayManager.instance.showAchievementsUI ();
 			}
 		}
 		
